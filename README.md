@@ -10,6 +10,28 @@ Short, hands-on demo of the [GumTree](https://github.com/GumTreeDiff/gumtree) CL
 * GumTree API — [https://github.com/GumTreeDiff/gumtree/wiki/GumTree-API](https://github.com/GumTreeDiff/gumtree/wiki/GumTree-API)
 
 ---
+## Getting started
+Clone this repo and navigate to the project root to follow the tutorial.
+
+```
+git clone https://github.com/isil66/GumTreeTutorial
+cd GumTreeTutorial
+```
+## Repo layout
+
+```
+.
+├─ before/                 # demo source A
+│  └─ Main.java
+├─ after/                  # demo source B
+│  └─ Main.java
+├─ lib/                    # GumTree jars (core, client, gen.jdt, etc.)
+├─ src/                    # GumTreeApiCheatSheet.java (Java API demo)
+├─ apiRunner               # compiles & runs the Java demo using lib/*
+└─ gumtree                 # minimal CLI wrapper: `java -cp lib/* com.github...Run "$@"`
+```
+
+---
 
 ## Demo inputs
 
@@ -208,22 +230,6 @@ This repo includes a single-file “teach-by-example” demo (**`GumTreeApiCheat
    You’ll see operations like `insert-node`, `delete-tree`, `move-tree at <index>`, `update-node`, etc.
 
     * `move-tree ... at N`: **N is the zero-based child index** under the target parent where the node is inserted.
-
----
-
-## Repo layout
-
-```
-.
-├─ before/                 # demo source A
-│  └─ Main.java
-├─ after/                  # demo source B
-│  └─ Main.java
-├─ lib/                    # GumTree jars (core, client, gen.jdt, etc.)
-├─ src/                    # GumTreeApiCheatSheet.java (Java API demo)
-├─ apiRunner               # compiles & runs the Java demo using lib/*
-└─ gumtree                 # minimal CLI wrapper: `java -cp lib/* com.github...Run "$@"`
-```
 
 ---
 
