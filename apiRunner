@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Directory of this script (repo root)
+SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
+
+# Where to find jars
+CP="$SCRIPT_DIR/lib/*:$SCRIPT_DIR/out"
+
+# Source & output dirs
+SRC="$SCRIPT_DIR/src"
+OUT="$SCRIPT_DIR/out"
+
+# Ensure out exists
+mkdir -p "$OUT"
+
+# Compile (only if class missing or source newer)
+if [ ! -f "$OUT/GumTreeApiCheatSheet.class" ] || [ "$SRC/GumTreeApiCheatSheet.java" -nt "$OUT/GumTreeApiCheatSheet.class" ]; then
+  echo "Compiling GumTreeApiCheatSheet.java..."
+  javac -cp "$SCRIPT_DIR/lib/*" -d "$OUT" "$SRC/GumTreeApiCheatSheet.java"
+fi
+
+# Run
+
+echo "Running GumTreeApiCheatSheet..."
+java -cp "$CP" GumTreeApiCheatSheet "$@"

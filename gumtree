@@ -1,0 +1,18 @@
+#!/bin/sh
+# gumtree — minimal runner for GumTree
+
+# resolve the dir this script lives in (repo root)
+SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
+
+# build classpath from all jars in lib
+CLASSPATH="$SCRIPT_DIR/lib/*"
+
+# pick java (honour JAVA_HOME if set)
+if [ -n "$JAVA_HOME" ] ; then
+  JAVA_CMD="$JAVA_HOME/bin/java"
+else
+  JAVA_CMD=java
+fi
+
+# run GumTree's main class with all arguments forwarded
+exec "$JAVA_CMD" -cp "$CLASSPATH" com.github.gumtreediff.client.Run "$@"
